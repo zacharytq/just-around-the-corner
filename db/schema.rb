@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_135145) do
+ActiveRecord::Schema.define(version: 2020_09_25_184157) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 2020_09_24_135145) do
     t.string "url"
     t.float "price"
     t.integer "friend_id"
+    t.boolean "purchased"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.string "email"
   end
 
 end
