@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(:username => params[:name])
+        @user = User.find_by(:name => params[:name])
         if @user && @user.authenticate(params[:password])
             session[:id] = @user.id
             redirect to "/friends"
