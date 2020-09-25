@@ -1,0 +1,4 @@
+<% @user.friends.each do |t| %>
+    <h4><%= t.name %></h4>
+    <p><%= t.gifts.count {|i| i.purchased == false} %> left to find.</p>
+<% end %>
