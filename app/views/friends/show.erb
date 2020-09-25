@@ -1,0 +1,11 @@
+<h3><%= @friend.name %></h3>
+<form action="/friends/<%= @friend.id %>/save" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    
+    <% @friend.gifts.each do |gift| %>
+    <h4><%= gift.name %></h4>
+    <form action="/gifts/delete/<%=gift.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" id="delete" name="delete" value="delete">
+    </form>
+
