@@ -32,6 +32,7 @@ class GiftsController < ApplicationController
         if @gift.save
             redirect to "/friends/#{@friend.id}"
         else
+            flash[:message] = "You must fill out all fields."
             redirect to "/gifts/#{@friend.id}/new"
         end
     end
