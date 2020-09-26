@@ -4,8 +4,11 @@
     
     <% @friend.gifts.each do |gift| %>
     <h4><%= gift.name %></h4>
-    <form action="/gifts/delete/<%=gift.id %>" method="post">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" id="delete" name="delete" value="delete">
-    </form>
+    <input type="checkbox" name="friend[gift_ids][]" value="<%=gift.id%>">Gift has been purchased.<br>
+    <a href="/gifts/:id/delete">Delete Gift</a>
+    <br>
+    <% end %>
+    <br>
+    <input type="submit" value="submit" name="submit">
+</form>
 
