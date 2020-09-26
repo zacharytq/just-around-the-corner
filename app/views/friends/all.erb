@@ -2,3 +2,9 @@
     <a href="/friends/<%= t.id %>"><%= t.name %></a>
     <p><%= t.gifts.count {|i| i.purchased == false} %> left to find.</p>
 <% end %>
+
+<form method="post" action="/friends/new">
+    <label for "name">Add a Friend</label> 
+    <input type="text" name="name" placeholder="Friend's Name">
+    <input type="submit" value="submit">
+</form>
