@@ -24,7 +24,7 @@
                                 <button class="btn btn-primary" type="submit">Purchased!</button>
                             </form>
                         <% end %>
-                        <form action="/gifts/:id" method="post">
+                        <form action="/gifts/<%= gift.id %>" method="post">
                             <input id="hidden" type="hidden" name="_method" value="delete">
                             <button class="btn btn-primary" type="submit">Delete Gift</button>
                         </form>
@@ -33,6 +33,12 @@
             <% end %>
         <% end %>
     </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">New Gift</h5>
+                <a href="/gifts/<%= @friend.id %>/new" class="btn btn-primary">Add a gift!</a>
+            </div>
+        </div>
 </div>
 
 <!--
