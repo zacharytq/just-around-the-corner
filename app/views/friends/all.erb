@@ -1,3 +1,29 @@
+<div class="container">
+    <div class="card-group">
+        <% @user.friends.each do |t| %>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= t.name %></h5>
+                    <% if t.gifts.count > 0 %>
+                        <% if t.gifts.count {|i| i.purchased == false} > 0 %>
+                            <p class="card-text">You have <%= t.gifts.count {|i| i.purchased == false} %> left to get for <%= t.name %>.</p>
+                        <% else %>
+                            <p class="card-text">You have gotten all <%= t.name %>'s gifts!</p>
+                        <% end %>
+                        <a href="/friends/<%= t.id %>"class="card-link">Gifts</a>
+                    <% end %>
+                    <a href="/gifts/<%= t.id %>/new" class="card-link">Add a Gift</a>
+                </div>
+            </div>
+        <% end %>
+        <div class="card">
+            <div class="card-body">
+                <a href="/friends/new"><h5 class="card-title">Create a New Friend</h5></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
 <% @user.friends.each do |t| %>
     <a href="/friends/<%= t.id %>"><%= t.name %></a>
     <p><%= t.gifts.count {|i| i.purchased == false} %> left to find.</p>
@@ -7,4 +33,16 @@
     <label for "name">Add a Friend</label> 
     <input type="text" name="name" placeholder="Friend's Name">
     <input type="submit" value="submit">
-</form>
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  -->
+
+  

@@ -9,6 +9,14 @@ class FriendsController < ApplicationController
         end
     end
 
+    get 'friends/new' do
+        if logged_in?
+            erb :'/friends/new'
+        else
+            redirect to '/'
+        end
+    end
+
     get '/friends/:id' do
         @friend = Friend.find(params[:id])
         if logged_in? && current_user = @friend.user
