@@ -30,11 +30,9 @@ class FriendsController < ApplicationController
         if logged_in?
             @friend = Friend.find(params[:id])
             if @friend.user == current_user
-                params[:friend][:gift_ids].each do |id|
-                   gift = Gift.find(id)
-                   gift.purchased = true
-                   gift.save
-                end
+                @gift = Gift.find(params[:gift_id])
+                @gift.purchased = params[:purchased]
+                @gift.save
                 redirect to "/friends/#{@friend.id}"
             end
         else

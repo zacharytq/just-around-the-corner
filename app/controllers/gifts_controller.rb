@@ -14,6 +14,19 @@ class GiftsController < ApplicationController
         end
     end
 
+    patch "/gifts/:id/save" do
+        if logged_in?
+            @gift = Gift.find(params[:id])
+            if current_user.friends.any? {|i| i == @gift.friend}
+                @gift.purchased = params[:purchased]
+                @gift.save
+                redirect to "/friends/#{@gift.friend.id}"
+            end
+        else
+            redirect to "/"
+        end
+    end
+
     get "/gifts/:id/new" do
         if logged_in?
             @friend = Friend.find(params[:id])

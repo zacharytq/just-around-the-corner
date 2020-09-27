@@ -1,5 +1,41 @@
-<h3><%= @friend.name %></h3>
+<div class="container">
+    <h3><%= @friend.name %></h3>
+</div>
 
+<div class="container">
+    <div class="card-group">
+        <% if !@friend.gifts.empty? %>
+            <% @friend.gifts.each do |gift| %>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= gift.name %></h5>
+                        <% if gift.purchased %>
+                            <p class="card-text">This gift has been purchased!</p>
+                            <form action="/gifts/<%= gift.id %>/save" method="post">
+                                <input id="hidden" type="hidden" name="_method" value="patch">
+                                <input id="hidden" type="hidden" name="purchased" value="false">
+                                <button class="btn btn-primary" type="submit">Add back to list.</button>
+                            </form>
+                        <% else %>
+                            <p class="card-text">$<%= gift.price %></p>
+                            <form action="/gifts/<%= gift.id %>/save" method="post">
+                                <input id="hidden" type="hidden" name="_method" value="patch">
+                                <input id="hidden" type="hidden" name="purchased" value="true">
+                                <button class="btn btn-primary" type="submit">Purchased!</button>
+                            </form>
+                        <% end %>
+                        <form action="/gifts/:id" method="post">
+                            <input id="hidden" type="hidden" name="_method" value="delete">
+                            <button class="btn btn-primary" type="submit">Delete Gift</button>
+                        </form>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+
+<!--
 <% if !@friend.gifts.empty? %>
 <form action="/friends/<%= @friend.id %>/save" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
@@ -16,4 +52,4 @@
 <% end %>
 
 <a href="/gifts/<%= @friend.id %>/new">Add another gift to the list.</a>
-
+-->

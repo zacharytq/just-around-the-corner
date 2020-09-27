@@ -18,7 +18,14 @@
         <% end %>
         <div class="card">
             <div class="card-body">
-                <a href="/friends/new"><h5 class="card-title">Create a New Friend</h5></a>
+                <h5 class="card-title">New Friend</h5>
+                <form method="post" action="/friends/new">
+                    <div class="form-group">
+                        <label for "name" class="card-text">Add a Friend</label> 
+                        <input type="text" class="form-control" name="name" placeholder="Friend's Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>
