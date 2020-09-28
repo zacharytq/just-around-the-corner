@@ -37,7 +37,7 @@ class GiftsController < ApplicationController
     post "/gifts/new" do
         @friend = Friend.find(params[:friend])
         @gift = Gift.new(name: params[:name])
-        @gift.price = params[:price].to_i
+        @gift.price = params[:price].to_f
         @gift.url = params[:url]
         @gift.friend = @friend
         if @gift.save
