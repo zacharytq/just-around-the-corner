@@ -41,21 +41,4 @@
         </div>
 </div>
 
-<!--
-<% if !@friend.gifts.empty? %>
-<form action="/friends/<%= @friend.id %>/save" method="post">
-    <input id="hidden" type="hidden" name="_method" value="patch">
-    
-    <% @friend.gifts.each do |gift| %>
-    <h4><%= gift.name %></h4>
-    <input type="checkbox" name="friend[gift_ids][]" value="<%=gift.id%>" <%= 'checked' if gift.purchased %>>Gift has been purchased.<br>
-    <a href="/gifts/<%= gift.id %>/delete">Delete Gift</a>
-    <br>
-    <% end %>
-    <br>
-    <input type="submit" value="submit" name="submit">
-</form>
-<% end %>
 
-<a href="/gifts/<%= @friend.id %>/new">Add another gift to the list.</a>
--->
